@@ -14,6 +14,8 @@
 		464880572B2C96C60010241D /* MyCar.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 464880552B2C96C60010241D /* MyCar.xcdatamodeld */; };
 		464880592B2C96C80010241D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 464880582B2C96C80010241D /* Assets.xcassets */; };
 		4648805C2B2C96C80010241D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4648805A2B2C96C80010241D /* LaunchScreen.storyboard */; };
+		464880652B2CAC370010241D /* Car+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464880632B2CAC370010241D /* Car+CoreDataClass.swift */; };
+		464880662B2CAC370010241D /* Car+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464880642B2CAC370010241D /* Car+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		464880582B2C96C80010241D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4648805B2B2C96C80010241D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4648805D2B2C96C80010241D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		464880632B2CAC370010241D /* Car+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Car+CoreDataClass.swift"; sourceTree = "<group>"; };
+		464880642B2CAC370010241D /* Car+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Car+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,6 +46,8 @@
 		464880402B2C96C60010241D = {
 			isa = PBXGroup;
 			children = (
+				464880632B2CAC370010241D /* Car+CoreDataClass.swift */,
+				464880642B2CAC370010241D /* Car+CoreDataProperties.swift */,
 				4648804B2B2C96C60010241D /* MyCar */,
 				4648804A2B2C96C60010241D /* Products */,
 			);
@@ -144,6 +150,8 @@
 				464880512B2C96C60010241D /* ViewController.swift in Sources */,
 				4648804D2B2C96C60010241D /* AppDelegate.swift in Sources */,
 				464880572B2C96C60010241D /* MyCar.xcdatamodeld in Sources */,
+				464880652B2CAC370010241D /* Car+CoreDataClass.swift in Sources */,
+				464880662B2CAC370010241D /* Car+CoreDataProperties.swift in Sources */,
 				4648804F2B2C96C60010241D /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

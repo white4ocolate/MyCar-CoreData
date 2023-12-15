@@ -1,13 +1,9 @@
-//
-//  ViewController.swift
-//  MyCar
-//
-//  Created by white4ocolate on 15.12.2023.
-//
-
 import UIKit
+import CoreData
 
 class ViewController: UIViewController {
+    
+    var context: NSManagedObjectContext!
 
     override func viewDidLoad() {
         super.viewDidLoad()
