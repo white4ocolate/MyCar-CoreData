@@ -1,24 +1,153 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_72" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22130"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="MyCar" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mark" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Ee-Le-aNr">
+                                <rect key="frame" x="141" y="68" width="148" height="21"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Model" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rsh-Ux-lgV">
+                                <rect key="frame" x="182.66666666666666" y="108" width="65" height="29"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" image="lamborginiMurcielago" translatesAutoresizingMaskIntoConstraints="NO" id="Bv9-mR-Rag" userLabel="Car Image View">
+                                <rect key="frame" x="16" y="145" width="398" height="261"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last Time Started:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iKl-aR-F5t" userLabel="Last Time Started Label">
+                                <rect key="frame" x="16" y="432" width="390" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number of trips: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yeG-vg-63V" userLabel="Number Of Trips Label">
+                                <rect key="frame" x="20" y="465" width="390" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="wL9-y1-Xt7">
+                                <rect key="frame" x="20" y="508" width="390" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="PzA-DQ-lWE"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="Lamborgini"/>
+                                    <segment title="Ferrari"/>
+                                    <segment title="Mercedes"/>
+                                    <segment title="Nissan"/>
+                                    <segment title="BMW"/>
+                                </segments>
+                                <connections>
+                                    <action selector="segmentedCtrlPressed:" destination="BYZ-38-t0r" eventType="valueChanged" id="ajo-Ic-nsy"/>
+                                </connections>
+                            </segmentedControl>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="249" image="myChoice" translatesAutoresizingMaskIntoConstraints="NO" id="hdq-Np-ymI" userLabel="My Choice Image View">
+                                <rect key="frame" x="76" y="560" width="278" height="240"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kHb-ty-HOo" userLabel="Start engine">
+                                <rect key="frame" x="20" y="835" width="117" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Start engine"/>
+                                <connections>
+                                    <action selector="startEnginePressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="XYd-7d-haH"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XeF-KQ-c69" userLabel="Rate">
+                                <rect key="frame" x="297" y="835" width="117" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Rate"/>
+                                <connections>
+                                    <action selector="rateItPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3th-dt-4PJ"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rating: X / 10.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mEV-VM-SDc">
+                                <rect key="frame" x="283" y="423" width="127" height="39"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="mEV-VM-SDc" secondAttribute="height" multiplier="36:7" constant="-73.571428571428584" id="xjl-a3-ala"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="18"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="kHb-ty-HOo" firstAttribute="top" secondItem="hdq-Np-ymI" secondAttribute="bottom" constant="35" id="1yq-PG-389"/>
+                            <constraint firstItem="hdq-Np-ymI" firstAttribute="top" secondItem="wL9-y1-Xt7" secondAttribute="bottom" constant="22" id="3mO-I7-ezY"/>
+                            <constraint firstItem="Bv9-mR-Rag" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="3uQ-KO-RmT"/>
+                            <constraint firstItem="iKl-aR-F5t" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-4" id="7PY-DZ-F35"/>
+                            <constraint firstItem="yeG-vg-63V" firstAttribute="top" secondItem="mEV-VM-SDc" secondAttribute="bottom" constant="3" id="C4K-8o-Hdm"/>
+                            <constraint firstItem="wL9-y1-Xt7" firstAttribute="top" secondItem="yeG-vg-63V" secondAttribute="bottom" constant="22" id="D15-xt-KJT"/>
+                            <constraint firstItem="iKl-aR-F5t" firstAttribute="leading" secondItem="yeG-vg-63V" secondAttribute="leading" constant="-4" id="Dln-Ri-iot"/>
+                            <constraint firstItem="Bv9-mR-Rag" firstAttribute="top" secondItem="Rsh-Ux-lgV" secondAttribute="bottom" constant="8" symbolic="YES" id="Exp-cN-TmZ"/>
+                            <constraint firstItem="Rsh-Ux-lgV" firstAttribute="top" secondItem="4Ee-Le-aNr" secondAttribute="bottom" constant="19" id="Nda-IY-tJC"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="XeF-KQ-c69" secondAttribute="trailing" constant="16" id="PIT-4W-cVs"/>
+                            <constraint firstItem="4Ee-Le-aNr" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="141" id="QVB-bu-a2k"/>
+                            <constraint firstItem="mEV-VM-SDc" firstAttribute="trailing" secondItem="yeG-vg-63V" secondAttribute="trailing" id="RKX-iP-Ekd"/>
+                            <constraint firstItem="hdq-Np-ymI" firstAttribute="centerX" secondItem="wL9-y1-Xt7" secondAttribute="centerX" id="SG1-1h-jEu"/>
+                            <constraint firstItem="Bv9-mR-Rag" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="SZq-8B-2Rm"/>
+                            <constraint firstItem="mEV-VM-SDc" firstAttribute="width" secondItem="mEV-VM-SDc" secondAttribute="height" multiplier="36:7" constant="-73.571428571428584" id="TLV-ZA-2It"/>
+                            <constraint firstItem="kHb-ty-HOo" firstAttribute="leading" secondItem="wL9-y1-Xt7" secondAttribute="leading" id="ThC-LV-O80"/>
+                            <constraint firstItem="4Ee-Le-aNr" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="9" id="WKh-hv-xM7"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Bv9-mR-Rag" secondAttribute="bottom" constant="492" id="YJU-Vm-WOM"/>
+                            <constraint firstItem="mEV-VM-SDc" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" symbolic="YES" id="YiO-5F-2zn"/>
+                            <constraint firstItem="XeF-KQ-c69" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="kHb-ty-HOo" secondAttribute="trailing" constant="8" symbolic="YES" id="ZU8-HW-aXy"/>
+                            <constraint firstItem="mEV-VM-SDc" firstAttribute="centerY" secondItem="iKl-aR-F5t" secondAttribute="centerY" id="aId-Xm-akB"/>
+                            <constraint firstItem="wL9-y1-Xt7" firstAttribute="leading" secondItem="yeG-vg-63V" secondAttribute="leading" id="am7-bf-Fup"/>
+                            <constraint firstItem="4Ee-Le-aNr" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="be7-rj-mmR"/>
+                            <constraint firstItem="hdq-Np-ymI" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="76" id="dm2-pI-uab"/>
+                            <constraint firstItem="wL9-y1-Xt7" firstAttribute="trailing" secondItem="yeG-vg-63V" secondAttribute="trailing" id="gP7-am-Szu"/>
+                            <constraint firstItem="iKl-aR-F5t" firstAttribute="top" secondItem="Bv9-mR-Rag" secondAttribute="bottom" constant="26" id="gdM-Jt-KKt"/>
+                            <constraint firstItem="Rsh-Ux-lgV" firstAttribute="centerX" secondItem="4Ee-Le-aNr" secondAttribute="centerX" id="pKP-vw-6Yk"/>
+                            <constraint firstItem="yeG-vg-63V" firstAttribute="top" secondItem="iKl-aR-F5t" secondAttribute="bottom" constant="12" id="t7H-5s-6bu"/>
+                            <constraint firstItem="XeF-KQ-c69" firstAttribute="top" secondItem="hdq-Np-ymI" secondAttribute="bottom" constant="35" id="tH6-C0-SLY"/>
+                            <constraint firstItem="iKl-aR-F5t" firstAttribute="centerX" secondItem="Bv9-mR-Rag" secondAttribute="centerX" constant="-4" id="tRs-Wf-acv"/>
+                            <constraint firstItem="iKl-aR-F5t" firstAttribute="trailing" secondItem="yeG-vg-63V" secondAttribute="trailing" constant="-4" id="wSH-Vi-93g"/>
+                            <constraint firstItem="kHb-ty-HOo" firstAttribute="width" secondItem="XeF-KQ-c69" secondAttribute="width" multiplier="1.98305" constant="-115.01694915254237" id="wot-g1-h6f"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="hdq-Np-ymI" secondAttribute="bottom" constant="98" id="zeL-5I-s59"/>
+                            <constraint firstItem="kHb-ty-HOo" firstAttribute="height" secondItem="XeF-KQ-c69" secondAttribute="height" id="zyV-7o-VAi"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="carImageView" destination="Bv9-mR-Rag" id="0y4-hx-U42"/>
+                        <outlet property="lastTimeStartedLabel" destination="iKl-aR-F5t" id="KpE-Fs-aOv"/>
+                        <outlet property="markLabel" destination="4Ee-Le-aNr" id="AAk-UH-fJ2"/>
+                        <outlet property="modelLabel" destination="Rsh-Ux-lgV" id="yBM-Hg-FD9"/>
+                        <outlet property="myChoiceImageView" destination="hdq-Np-ymI" id="2ja-L9-4a9"/>
+                        <outlet property="numberOfTripsLabel" destination="yeG-vg-63V" id="dF0-s7-VfL"/>
+                        <outlet property="ratingLabel" destination="mEV-VM-SDc" id="zla-Dg-gTj"/>
+                        <outlet property="segmentedControl" destination="wL9-y1-Xt7" id="9T6-0w-tGe"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="133.95348837209303" y="3.218884120171674"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="lamborginiMurcielago" width="210" height="101"/>
+        <image name="myChoice" width="150" height="150"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>
