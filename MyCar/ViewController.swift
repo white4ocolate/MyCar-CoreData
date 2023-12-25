@@ -16,7 +16,10 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var segmentedControl: UISegmentedControl! {
         didSet {
-//            updateSegmentedControl()
+            guard let store = restore(forkey: "store") else {
+                return
+            }
+            updateSegmentedControl()
         }
     }
     @IBOutlet weak var markLabel: UILabel!
@@ -66,6 +69,7 @@ class ViewController: UIViewController {
         
         guard let store = restore(forkey: "store") else {
             getDataFromFile()
+            updateSegmentedControl()
             return
         }
         
@@ -114,17 +118,17 @@ class ViewController: UIViewController {
     private func getDataFromFile() {
         // is it first launch - checking if the CoreData is empty
         
-         let fetchRequest: NSFetchRequest<Car> = Car.fetchRequest()
-         fetchRequest.predicate = NSPredicate(format: "mark != nil")
-         
-         var records = 0
-         do {
-         records = try context.count(for: fetchRequest)
-         print("Is Data already?")
-         }catch let error as NSError {
-         print(error.localizedDescription)
-         }
-         guard records == 0 else {return}
+//         let fetchRequest: NSFetchRequest<Car> = Car.fetchRequest()
+//         fetchRequest.predicate = NSPredicate(format: "mark != nil")
+//         
+//         var records = 0
+//         do {
+//         records = try context.count(for: fetchRequest)
+//         print("Is Data already?")
+//         }catch let error as NSError {
+//         print(error.localizedDescription)
+//         }
+//         guard records == 0 else {return}
          
         
         guard let pathToFile = Bundle.main.path(forResource: "data", ofType: "plist"),
