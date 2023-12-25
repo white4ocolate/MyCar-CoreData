@@ -81,10 +81,11 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rating: X / 10.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mEV-VM-SDc">
                                 <rect key="frame" x="283" y="423" width="127" height="39"/>
                                 <constraints>
+                                    <constraint firstAttribute="width" secondItem="mEV-VM-SDc" secondAttribute="height" multiplier="36:7" constant="-73.571428571428584" id="TLV-ZA-2It"/>
                                     <constraint firstAttribute="width" secondItem="mEV-VM-SDc" secondAttribute="height" multiplier="36:7" constant="-73.571428571428584" id="xjl-a3-ala"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="18"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -105,7 +106,6 @@
                             <constraint firstItem="mEV-VM-SDc" firstAttribute="trailing" secondItem="yeG-vg-63V" secondAttribute="trailing" id="RKX-iP-Ekd"/>
                             <constraint firstItem="hdq-Np-ymI" firstAttribute="centerX" secondItem="wL9-y1-Xt7" secondAttribute="centerX" id="SG1-1h-jEu"/>
                             <constraint firstItem="Bv9-mR-Rag" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="SZq-8B-2Rm"/>
-                            <constraint firstItem="mEV-VM-SDc" firstAttribute="width" secondItem="mEV-VM-SDc" secondAttribute="height" multiplier="36:7" constant="-73.571428571428584" id="TLV-ZA-2It"/>
                             <constraint firstItem="kHb-ty-HOo" firstAttribute="leading" secondItem="wL9-y1-Xt7" secondAttribute="leading" id="ThC-LV-O80"/>
                             <constraint firstItem="4Ee-Le-aNr" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="9" id="WKh-hv-xM7"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Bv9-mR-Rag" secondAttribute="bottom" constant="492" id="YJU-Vm-WOM"/>

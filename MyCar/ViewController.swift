@@ -5,6 +5,7 @@ class ViewController: UIViewController {
     
     var context: NSManagedObjectContext!
     let userDefaults = UserDefaults.standard
+    var car: Car!
     
     lazy var dateFormatter: DateFormatter = {
         let df = DateFormatter()
@@ -15,7 +16,7 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var segmentedControl: UISegmentedControl! {
         didSet {
-            updateSegmentedControl()
+//            updateSegmentedControl()
         }
     }
     @IBOutlet weak var markLabel: UILabel!
@@ -32,9 +33,32 @@ class ViewController: UIViewController {
     }
     
     @IBAction func startEnginePressed(_ sender: UIButton) {
+        car.timesDriven += 1
+        car.lastStarted = Date()
+        
+        do {
+            try context.save()
+            insertDataFrom(selectedCar: car)
+        }catch let error as NSError {
+            print(error.localizedDescription)
+        }
     }
     
     @IBAction func rateItPressed(_ sender: UIButton) {
+        let alertController = UIAlertController(title: "Enjoying this car?", message: "Please rate this car", preferredStyle: .alert)
+        let rateAction = UIAlertAction(title: "Rate", style: .default) { action in
+            if let text = alertController.textFields?.first?.text {
+                self.updateRating(rating: (text as NSString).doubleValue)
+            }
+        }
+        alertController.addTextField { textField in
+            textField.keyboardType = .numberPad
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .default)
+        
+        alertController.addAction(rateAction)
+        alertController.addAction(cancelAction)
+        self.present(alertController, animated: true)
     }
     
     override func viewDidLoad() {
@@ -47,6 +71,20 @@ class ViewController: UIViewController {
         
     }
     
+    private func updateRating(rating: Double){
+        car.rating = rating
+        do {
+            try context.save()
+            insertDataFrom(selectedCar: car)
+        }catch let error as NSError {
+            let alertController = UIAlertController(title: "Wrong value", message: "You entered an incorrect value", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: .default)
+            alertController.addAction(okAction)
+            self.present(alertController, animated: true)
+            print(error.localizedDescription)
+        }
+    }
+    
     private func updateSegmentedControl() {
         let fetchRequest: NSFetchRequest<Car> = Car.fetchRequest()
         let mark = segmentedControl.titleForSegment(at: segmentedControl.selectedSegmentIndex)
@@ -54,7 +92,7 @@ class ViewController: UIViewController {
         
         do{
             let results = try context.fetch(fetchRequest)
-            let car = results.first
+            car = results.first
             print(results)
             insertDataFrom(selectedCar: car!)
         }catch let error as NSError {
@@ -76,19 +114,18 @@ class ViewController: UIViewController {
     private func getDataFromFile() {
         // is it first launch - checking if the CoreData is empty
         
-        /*
-        let fetchRequest: NSFetchRequest<Car> = Car.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "mark != nil")
-        
-        var records = 0
-        do {
-            records = try context.count(for: fetchRequest)
-            print("Is Data already?")
-        }catch let error as NSError {
-            print(error.localizedDescription)
-        }
-        guard records == 0 else {return}
-        */
+         let fetchRequest: NSFetchRequest<Car> = Car.fetchRequest()
+         fetchRequest.predicate = NSPredicate(format: "mark != nil")
+         
+         var records = 0
+         do {
+         records = try context.count(for: fetchRequest)
+         print("Is Data already?")
+         }catch let error as NSError {
+         print(error.localizedDescription)
+         }
+         guard records == 0 else {return}
+         
         
         guard let pathToFile = Bundle.main.path(forResource: "data", ofType: "plist"),
               let dataArray = NSArray(contentsOfFile: pathToFile) else {return}
