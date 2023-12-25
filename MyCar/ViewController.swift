@@ -5,8 +5,19 @@ class ViewController: UIViewController {
     
     var context: NSManagedObjectContext!
     let userDefaults = UserDefaults.standard
-
-    @IBOutlet weak var segmentedControl: UISegmentedControl!
+    
+    lazy var dateFormatter: DateFormatter = {
+        let df = DateFormatter()
+        df.dateStyle = .short
+        df.timeStyle = .none
+        return df
+    }()
+    
+    @IBOutlet weak var segmentedControl: UISegmentedControl! {
+        didSet {
+            updateSegmentedControl()
+        }
+    }
     @IBOutlet weak var markLabel: UILabel!
     @IBOutlet weak var modelLabel: UILabel!
     @IBOutlet weak var carImageView: UIImageView!
@@ -17,6 +28,7 @@ class ViewController: UIViewController {
     
     
     @IBAction func segmentedCtrlPressed(_ sender: UISegmentedControl) {
+        updateSegmentedControl()
     }
     
     @IBAction func startEnginePressed(_ sender: UIButton) {
@@ -27,14 +39,57 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
         guard let store = restore(forkey: "store") else {
             getDataFromFile()
             return
         }
+        
     }
-
+    
+    private func updateSegmentedControl() {
+        let fetchRequest: NSFetchRequest<Car> = Car.fetchRequest()
+        let mark = segmentedControl.titleForSegment(at: segmentedControl.selectedSegmentIndex)
+        fetchRequest.predicate = NSPredicate(format: "mark == %@", mark!)
+        
+        do{
+            let results = try context.fetch(fetchRequest)
+            let car = results.first
+            print(results)
+            insertDataFrom(selectedCar: car!)
+        }catch let error as NSError {
+            print(error.localizedDescription)
+        }
+    }
+    
+    private func insertDataFrom(selectedCar car: Car) {
+        carImageView.image = UIImage(data: car.imageData!)
+        markLabel.text = car.mark
+        modelLabel.text = car.model
+        myChoiceImageView.isHidden = !car.myChoice
+        ratingLabel.text = "Rating: \(car.rating)/10"
+        numberOfTripsLabel.text = "Number of trips: \(car.timesDriven)"
+        lastTimeStartedLabel.text = "Last time started: \(dateFormatter.string(from: car.lastStarted!))"
+        segmentedControl.tintColor = car.tintColor as! UIColor
+    }
+    
     private func getDataFromFile() {
+        // is it first launch - checking if the CoreData is empty
+        
+        /*
+        let fetchRequest: NSFetchRequest<Car> = Car.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "mark != nil")
+        
+        var records = 0
+        do {
+            records = try context.count(for: fetchRequest)
+            print("Is Data already?")
+        }catch let error as NSError {
+            print(error.localizedDescription)
+        }
+        guard records == 0 else {return}
+        */
+        
         guard let pathToFile = Bundle.main.path(forResource: "data", ofType: "plist"),
               let dataArray = NSArray(contentsOfFile: pathToFile) else {return}
         
